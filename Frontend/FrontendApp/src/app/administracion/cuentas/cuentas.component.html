@@ -1,0 +1,125 @@
+
+
+ <div class="container-fluid">
+    <button class="btn btn-success" data-toggle="modal" data-target="#crearModal">Crear</button>
+</div>
+    <div class="text-center">
+        <h2>Cuentas</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th style="text-align: center;">Codigo</th>
+                    <th style="text-align: center;">Tipo</th>
+                    <th style="text-align: center;">Nombre</th>
+                    <th style="text-align: center;">Descripcion</th>
+                    <th style="text-align: center;">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let cuentas of cuentass">
+                    <td style="vertical-align: middle;">{{cuentas.codigo}}</td>
+                    <td style="vertical-align: middle;">{{cuentas.tipoRol}}</td>
+                    <td style="vertical-align: middle;">{{cuentas.nombre}}</td>
+                    <td style="vertical-align: middle;">{{cuentas.descripcion}}</td>
+                    <th>
+                        <div>
+                                <button type="button" class="btn btn-info" style="vertical-align: middle;" (click)="mostrarEditar(cuentas.codigo)">Editar</button>
+                                <button type="button" class="btn btn-danger" style="vertical-align: middle;" (click)="eliminarCuenta(cuentas.codigo)">Eliminar</button>
+                        </div>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+        
+  <!-- Modal -->
+  <div class="modal" id="crearModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <form (ngSubmit)="crearCuenta()" #formCrear="ngForm">
+                <div class="modal-content">
+                        <div class="modal-header">
+                                <h5 class="modal-title">Crear Cuenta</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                        </div>
+
+                        <div class="modal-body">
+                                <div class="container">
+                                    <div class="form-group">
+                                        <label for="codigoNuevo">Codigo</label>
+                                        <input id="codigoNuevo" name="codigoNuevo" [(ngModel)]="codigoNuevo" class="form-control" type="number" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="tipoCuentas">Tipo de Cuentas</label>                                                                        
+                                         <select style="width:100%;" [ngModel]="tipoCuentaNuevo" [ngModelOptions]="{ standalone: true }" (ngModelChange)="onChange($event)">
+                                             <option [value]="tipoc.codigo" *ngFor="let tipoc of tipoCuentas">{{tipoc.descripcion}}</option>
+                                         </select>                                     
+                                   </div>
+                                    <div class="form-group">
+                                        <label for="nombreNuevo">Nombre</label>
+                                        <input id="nombreNuevo" name="nombreNuevo" [(ngModel)]="nombreNuevo" class="form-control" type="text" required>
+                                    </div>
+                                    <div class="form-group">
+                                            <label for="descripcionNuevo">Descripcion</label>
+                                            <input id="descripcionNuevo" name="descripcionNuevo" [(ngModel)]="descripcionNuevo" class="form-control" type="text" required>
+                                    </div>
+                                </div>
+                        </div>
+
+                        <div class="modal-footer">
+                                <button type="submit" class="btn btn-success" [disabled]="!formCrear.form.valid">Guardar</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        </div>
+                </div>
+        </form>
+    </div>
+  </div>
+
+
+  <div class="modal" id="editarModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <form (ngSubmit)="editarCuenta()" #formEditar="ngForm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Editar Cuenta</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                       
+                            <div class="form-group">
+                                    <label for="tipoUsuario">Tipo de Cuenta</label>                                                                        
+                                     <select style="width:100%;" [ngModel]="tipoCuentaEditar" [ngModelOptions]="{ standalone: true }" (ngModelChange)="onChange($event)">
+                                         <option [value]="tipo.codTipocuentas" *ngFor="let tipo of tipoCuentas">{{tipo.descripcion}}</option>
+                                     </select>                                     
+                               </div>
+                                <!--div class="form-group">
+                                    <label for="codigoEditar">Codigo</label>
+                                    <input id="codigoEditar" name="codigoEditar" [(ngModel)]="codigoEditar" class="form-control" type="number" required>
+                                </div-->
+                                <div class="form-group">
+                                        <label for="nombreEditar">Nombre</label>
+                                        <input id="nombreEditar" name="nombreEditar" [(ngModel)]="nombreEditar" class="form-control" type="text" required>
+                                </div>
+                                <div class="form-group">
+                                        <label for="descripcionEditar">Descripcion</label>
+                                        <input id="descripcionEditar" name="descripcionEditar" [(ngModel)]="descripcionEditar" class="form-control" type="text" required>
+                                </div>
+
+                        <input type="hidden" id="codigoEditar" name="codigoEditar" [(ngModel)]="codigoEditar">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success" [disabled]="!formEditar.form.valid">Editar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+            </form>
+        </div>
+</div>
+      
+    

@@ -1,0 +1,77 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a class="nav-brand" href="#" style="text-align: center;">
+        <img class="img-responsive" src="https://i.pinimg.com/originals/4e/b9/b9/4eb9b91c1484853ae724bc267070fb97.png" width="55"
+            height="55" alt="logo">
+        <br>Club Rotario
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="panel">Inicio
+                    <span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item dropdown">
+                <a *ngIf="esAdministrador" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    Administraci&oacute;n
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a *ngIf="esAdministrador" class="dropdown-item" href="panel/usuarios">Usuarios</a>
+                    <a *ngIf="esAdministrador" class="dropdown-item" href="panel/privilegios">Privilegios</a>
+                    <a *ngIf="esAdministrador" class="dropdown-item" href="panel/ciudades">Ciudades</a>
+                    <a *ngIf="esAdministrador" class="dropdown-item" href="panel/departamentos">Departamentos</a>
+                    <a *ngIf="esAdministrador" class="dropdown-item" href="panel/paises">Paises</a>
+                    <a *ngIf="esAdministrador" class="dropdown-item" href="panel/parametros">Parametros</a>
+                    <a *ngIf="esAdministrador" class="dropdown-item" href="panel/parametros_contables">Parametros Contables</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        Operaciones
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="panel/anticipos">Anticipos</a>
+                        <a class="dropdown-item" href="panel/bancos">Bancos</a>
+                        <a class="dropdown-item" href="panel/cheques">Cheques</a>
+                        <a class="dropdown-item" href="panel/cierres">Cierres</a>
+                        <a class="dropdown-item" href="panel/cuentas">Cuentas</a>
+                        <a class="dropdown-item" href="panel/cuentas_corientes">Cuentas Corrientes</a>
+                        <a class="dropdown-item" href="panel/cxc">Cuentas x Cobrar</a>
+                        <a class="dropdown-item" href="panel/cxp">Cuentas x Pagar</a>
+
+                    </div>
+                </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Acerca De</a>
+            </li>
+            <li class="nav-item">
+                    <span class="nav-link">Hola! {{this.cookieService.get('nombre')}} ({{this.cookieService.get('email')}})</span>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+        </form>
+        &nbsp;
+        <button style="float: right;" class="btn btn-outline-danger" (click)="logout()">Cerrar Sesi&oacute;n</button>
+    </div>
+</nav>
+<div class="container fluid" style="height: 100%;">
+    <div class="container" id="">
+        <br>
+        <usuarios-table *ngIf="usuarios"></usuarios-table>
+        <dashboard *ngIf="dashboard"></dashboard>
+    </div>
+</div>
+<footer class="footer" style="bottom: 0px; position: relative; width: 100%;">
+    <div class="container-fluid bg-dark" style="color: white; text-align: center;">
+        <span>&copy; 2018 - Club Rotario San Pedro Sula</span>
+    </div>
+</footer>

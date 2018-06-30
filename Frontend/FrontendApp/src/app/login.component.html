@@ -1,0 +1,32 @@
+<div class="jumbotron bg-dark" style="color: white;">
+    <h1 style="text-align: center;">
+        <img class="img-responsive" src="https://i.pinimg.com/originals/4e/b9/b9/4eb9b91c1484853ae724bc267070fb97.png" width="150px"
+            height="auto" alt="logo">
+        <br> Sistema Contable Club Rotario San Pedro Sula
+    </h1>
+</div>
+<div class="container fluid">
+    <div class="container" id="login-div">
+        <fieldset>
+            <legend>Login</legend>
+            <form (ngSubmit)="login()" #formLogin="ngForm">
+                <div class="form-group">
+                    <label for="username">Usuario</label>
+                    <input id="username" name="username" [(ngModel)]="username" class="form-control" type="text" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input id="password" name="password" [(ngModel)]="password" class="form-control" type="password" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success" [disabled]="!formLogin.form.valid">Login</button>
+                </div>
+            </form>
+        </fieldset>
+    </div>
+</div>
+<footer class="footer" style="bottom: 0px; position: relative; width: 100%;">
+    <div class="container-fluid bg-dark" style="color: white; text-align: center;">
+        <span>&copy; 2018 - Club Rotario San Pedro Sula</span>
+    </div>
+</footer>

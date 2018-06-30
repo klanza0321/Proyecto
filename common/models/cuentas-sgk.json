@@ -1,0 +1,42 @@
+{
+  "name": "cuentas_sgk",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "cod_cuentas": {
+      "type": "number",
+      "required": true
+    },
+    "tipo_cuentas": {
+      "type": "string",
+      "required": true
+    },
+    "nivel2_cuentas": {
+      "type": "string",
+      "required": true
+    },
+    "nivel3_cuentas": {
+      "type": "string",
+      "required": true
+    },
+    "nivel4_cuentas": {
+      "type": "string",
+      "required": true
+    },
+    "nivel5_cuentas": {
+      "type": "string",
+      "required": true
+    },
+    "nivel6_cuentas": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
